@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,34 +10,41 @@
     <!--Use Daisy Ul from CDN-->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/7cb9b40a21.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="w-11/12 mx-auto">
-<header>
-    <!-- navbar -->
-    <nav class=" flex justify-between items-center border-b-2  border-[#17171730] py-5">
-        <!-- nav logo -->
-        <div class="logo">
-            <img src="./ph-tube-resources/Logo.png" alt="ph-tube logo">
-        </div>
-        <!-- nav sortview btn -->
-        <div class="Sortview-btn">
-            <button class="btn bg-[#25252533] text-xl rounded-lg">Sort by view</button>
-        </div>
-        <!-- nav blog btn -->
-        <div class="blog-btn">
-            <button class="btn bg-[#FF1F3D] text-xl text-white rounded-lg">Blog</button>
-        </div>
-    </nav>
-    <!-- deynamic btn all music comedy drawing -->
-     <nav id="categiry-container" class="flex justify-center items-center gap-5 py-5">
-        <div>
-            <button class="btn btn-sm rounded-lg text-xl p-4 bg-[#FF1F3D] text-white">All</button>
-        </div>
-        
-     </nav>
-</header>
-<script src="./js/ph-tube.js"></script>
+    <!-- header -->
+    <header>
+        <!-- navbar -->
+        <nav class=" flex justify-between items-center border-b-2  border-[#17171730] py-5">
+            <!-- nav logo -->
+            <div class="logo">
+                <img src="./ph-tube-resources/Logo.png" alt="ph-tube logo">
+            </div>
+            <!-- nav sortview btn -->
+            <div class="Sortview-btn">
+                <button class="btn bg-[#25252533] text-xl rounded-lg">Sort by view</button>
+            </div>
+            <!-- nav blog btn -->
+            <div class="blog-btn">
+                <button class="btn bg-[#FF1F3D] text-xl text-white rounded-lg">Blog</button>
+            </div>
+        </nav>
+        <!-- deynamic btn all music comedy drawing -->
+        <nav id="categiry-container" class="  mt-8 flex justify-center items-center gap-5 py-5">
+            <div>
+                <button onclick="loadVieos()" class="btn btn-sm rounded-lg text-xl p-4 bg-[#FF1F3D] text-white">All</button>
+            </div>
+        </nav>
+        <!-- //sectiuon 1 videos -->
+        <section id="videos-container" class="grid grid-cols-4 gap-5 mt-8">
+            
+            
+        </section>
+    </header>
+    <script src="./js/ph-tube.js"></script>
 </body>
 
 </html>
