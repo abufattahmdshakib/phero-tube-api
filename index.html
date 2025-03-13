@@ -13,9 +13,9 @@
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/7cb9b40a21.js" crossorigin="anonymous"></script>
     <style>
-        .active{
+        .active {
             background-color: #FF1F3D;
-            color:white;
+            color: white;
         }
     </style>
 </head>
@@ -30,25 +30,47 @@
                 <img src="./ph-tube-resources/Logo.png" alt="ph-tube logo">
             </div>
             <!-- nav sortview btn -->
-            <div class="Sortview-btn">
-                <button class="btn bg-[#25252533] text-xl rounded-lg">Sort by view</button>
+            <div class="Sortview-btn w-96 ">
+                <label class="input ">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+                    <input id="search_input" type="search" required placeholder="Search"/>
+                  </label>
             </div>
             <!-- nav blog btn -->
             <div class="blog-btn">
-                <button class="btn bg-[#FF1F3D] text-xl text-white rounded-lg">Blog</button>
+                <button class="btn bg-[#FF1F3D] text-xl text-white rounded-lg">Sort by view</button>
             </div>
         </nav>
         <!-- deynamic btn all music comedy drawing -->
         <nav id="categiry-container" class="  mt-8 flex justify-center items-center gap-5 py-5">
             <div>
-                <button onclick="loadVieos()" class="btn btn-sm rounded-lg text-xl p-4 bg-[#25252520]">All</button>
+                <button id="btn-all" onclick="loadVieos()"
+                    class="btn btn-sm rounded-lg text-xl p-4 bg-[#25252520] hover:bg-red-400">All</button>
             </div>
         </nav>
         <!-- //sectiuon 1 videos -->
         <section id="videos-container" class="grid grid-cols-4 gap-5 mt-8">
-            
-            
+
+
         </section>
+
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+        <dialog id="video_details" class="modal">
+            <div class="modal-box">
+                <div id="detaile_container">
+
+                    
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn hover:bg-red-400">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </header>
     <!-- ph-tube.js link -->
     <script src="./js/ph-tube.js"></script>
