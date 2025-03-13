@@ -1,43 +1,80 @@
+//remove btn onclick color all music comedy and drawing btn
+function removeActiveClass () {
+    const activeButtons = document.getElementsByClassName("active");
+    for (let btn of activeButtons){
+        btn.classList.remove("active");
+    }
+}
+
 //array function for fetch all music comedy and drawing btn
 const loadData = () => {
-    // fetch the data btn
     fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
         .then(response => response.json())
         .then(data => {
             showUserbtn(data.categories)
         })
-} 
+}
+
+
+
 //sectiuon 1 array function for fetch videos
 const loadVieos = () => {
-    // fetch the data videos
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+        .then(response => response.json())
+        .then(data => {
+            showUserVideos(data.videos)
+        })
+}
+
+
+//load data for  music comedy and drawing btn
+const loadCategorieVideo = (id) => {
+    // open api url 
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+    fetch(url)
     .then(response => response.json())
     .then(data => {
-        showUserVideos(data.videos)
-    })
+        removeActiveClass ();
+        const clickedButton = document.getElementById(`btn-${id}`);
+        clickedButton.classList.add("active");
+        console.log(clickedButton)
+        showUserVideos(data.category);
+    });
+
 }
+
+
+
+
 //array function for fetch all music comedy and drawing btn
 const showUserbtn = (categories) => {
-    //categiry-container Id  for deynamic btn
     const categiryContainer = document.getElementById("categiry-container");
-    //for loop
     for (const categorie of categories) {
         const div = document.createElement("div");
-        // div innerhtml for appendchild
         div.innerHTML = `
-        <button class="btn btn-sm text-xl p-5 rounded-lg hover:bg-[#FF1F3D]  hover:text-white bg-[#25252520]">${categorie.category}</button>
-        `;
+        <button id="btn-${categorie.category_id}" onclick=" loadCategorieVideo ( ${categorie.category_id})" class="btn btn-sm text-xl p-5 rounded-lg hover:bg-[#FF1F3D]  hover:text-white bg-[#25252520]">${categorie.category}</button> `;
         categiryContainer.append(div);
     }
 }
 
+
+
+
 //sectiuon 1 array function for fetch videos
 const showUserVideos = (videos) => {
-const videosContainer = document.getElementById("videos-container");
-videos.forEach(video => {
-    const videoCard = document.createElement("div");
-    videoCard.innerHTML = `
-   <div class="card bg-base-100">
+    const videosContainer = document.getElementById("videos-container");
+    videosContainer.innerHTML = "";
+    if (videos.length == 0){
+        videosContainer.innerHTML = `<div class=" py-8 flex col-span-full flex-col text-center justify-center items-center mx-auto">
+                <img src="./ph-tube-resources/Icon.png" alt="">
+                <h1 class="text-4xl mt-8  w-96 font-bold ">Oops!! Sorry, There is no content here</h1>
+            </div>`;
+            return ;
+    }
+    videos.forEach(video => {
+        const videoCard = document.createElement("div");
+        videoCard.innerHTML = `
+            <div class="card bg-base-100">
                 <figure class="relative">
                     <img class="w-full h-[200px] object-cover" src="${video.thumbnail}" alt="videos" />
                         <span class=" text-lg text-[#FFFFFF] bg-[#171717] absolute bottom-3 right-3 px-2 py-1 rounded-sm">3hrs 56 min ago</span>
@@ -56,11 +93,11 @@ videos.forEach(video => {
                         <p class="text-lg text-gray-500">${video.others.views} views</p>
                     </div>
                 </div>
-            </div>
-    `;
-    videosContainer.append(videoCard);
-});
+            </div>`;
+        videosContainer.append(videoCard);
+    });
 }
+
 
 // fetch the data call
 loadData()
